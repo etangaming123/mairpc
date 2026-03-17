@@ -16,7 +16,7 @@ if not os.path.exists("env.json"):
     input("Please set up your env.json file with your bot token, user ID, and channel ID.")
     exit()
 
-with open("env.json", "r") as f:
+with open("env.json", "r", encoding="utf-8") as f:
     env = json.load(f)
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.default()) # we dont need everything
