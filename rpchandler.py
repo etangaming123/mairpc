@@ -27,7 +27,7 @@ def start_rpc():
     if data['user_id'] != youruserid:
         return {"error": "You are not authorized to use this command."}, 403
     presenceclient.connect()
-    presenceclient.update(details="In queue // waiting for washing machine", state=f"{env['maimaiusername']} // Rating: {data['rating']}", start=data['ctime'], large_image="maimai", large_text="maimai RPC by etan", small_image="pfpicon", small_text=f"playing as {env['maimaiusername']}")
+    presenceclient.update(details="In queue // waiting for washing machine", state=f"{env['maimaiusername']} // Rating: {data['rating']}", start=data['ctime'], large_image="maimai", large_text="maimai RPC by etan", small_image="pfpicon", small_text=f"playing as {env['maimaiusername']}", buttons=[{"label": "source code", "url": "https://github.com/etangaming123/mairpc"}])
     return {"message": "Welcome to maimai!"}, 200
 
 @app.route('/inqueue', methods=['POST'])
@@ -40,7 +40,7 @@ def inqueue():
     ctime = data['ctime']
     global playing
     playing = False
-    presenceclient.update(details="In queue // waiting for washing machine", state=f"{env['maimaiusername']} // Rating: {data['rating']}", start=data['ctime'], large_image="maimai", large_text="maimai RPC by etan", small_image="pfpicon", small_text=f"playing as {env['maimaiusername']}")
+    presenceclient.update(details="In queue // waiting for washing machine", state=f"{env['maimaiusername']} // Rating: {data['rating']}", start=data['ctime'], large_image="maimai", large_text="maimai RPC by etan", small_image="pfpicon", small_text=f"playing as {env['maimaiusername']}", buttons=[{"label": "source code", "url": "https://github.com/etangaming123/mairpc"}])
     return {"message": "Status set to in queue."}, 200
 
 @app.route('/playing', methods=['POST'])
@@ -54,7 +54,7 @@ def playing():
         global ctime
         ctime = data['ctime']
         playing = True
-    presenceclient.update(details=f"In game // tapping funny buttons", state=f"{env['maimaiusername']} // Rating: {data['rating']}", start=data['ctime'], large_image="maimai", large_text="maimai RPC by etan", small_image="pfpicon", small_text=f"playing as {env['maimaiusername']}")
+    presenceclient.update(details=f"In game // tapping funny buttons", state=f"{env['maimaiusername']} // Rating: {data['rating']}", start=data['ctime'], large_image="maimai", large_text="maimai RPC by etan", small_image="pfpicon", small_text=f"playing as {env['maimaiusername']}", buttons=[{"label": "source code", "url": "https://github.com/etangaming123/mairpc"}])
     return {"message": "Status set to playing maimai."}, 200
 
 @app.route('/stop_rpc', methods=['POST'])
